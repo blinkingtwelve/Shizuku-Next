@@ -12,13 +12,14 @@ import moe.shizuku.manager.ShizukuSettings
 import kotlin.coroutines.resume
 
 /**
- * Confirms a permanent Shizuku grant with the device's own authentication.
+ * Confirms a Shizuku grant with the device's own authentication.
  *
  * A grant is the one action here that lets another app borrow the shell, so it should not be
- * possible with only an unlocked phone. The tile gate already asks whether the phone is locked;
- * this asks the user to prove who they are. Android's biometric prompt is used through
- * androidx.biometric so the same path works below Android 10 as well. The setting can turn
- * the check off for people who do not want it.
+ * possible with only an unlocked phone. This applies to a one-time grant as much as a permanent
+ * one: both hand the app the shell, and only the lifetime differs. The tile gate already asks
+ * whether the phone is locked; this asks the user to prove who they are. Android's biometric
+ * prompt is used through androidx.biometric so the same path works below Android 10 as well.
+ * The setting can turn the check off for people who do not want it.
  */
 object GrantAuthenticator {
 
